@@ -6,6 +6,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.Instant;
 import java.util.Map;
 
 @RestControllerAdvice
@@ -23,5 +24,15 @@ public class GlobalExceptionHandler {
                 ? "Invalid request"
                 : ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
         return ResponseEntity.badRequest().body(Map.of("error", message));
+    }
+
+    @ExceptionHandler(InvalidEntryDateException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidEntryDate(InvalidEntryDateException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                "timestamp", Instant.now().toString(),
+                "status", 400,
+                "error", "Invalid Entry Date",
+                "message", ex.getMessage()
+        ));
     }
 }
