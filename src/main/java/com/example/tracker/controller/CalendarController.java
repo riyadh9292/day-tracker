@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 @RestController
 @RequestMapping("/api/calendar")
@@ -33,7 +34,7 @@ public class CalendarController {
 
     @PutMapping("/entry")
     public ResponseEntity<CalendarResponse> updateEntry(@Valid @RequestBody EntryUpdateRequest request) {
-        if (!request.getDate().isEqual(LocalDate.now())) {
+        if (!request.getDate().isEqual(LocalDate.now(ZoneId.of("Asia/Dhaka")))) {
             throw new InvalidEntryDateException("Only today's entry can be updated. Received: " + request.getDate());
         }
         User user = userService.findVerifiedUser(request.getEmail())
