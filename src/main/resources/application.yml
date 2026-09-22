@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/tracker
-    username: tracker
-    password: tracker
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/tracker}
+    username: ${SPRING_DATASOURCE_USERNAME:tracker}
+    password: ${SPRING_DATASOURCE_PASSWORD:tracker}
   jpa:
     hibernate:
       ddl-auto: update
