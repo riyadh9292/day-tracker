@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="signup-screen" class="screen">
+    <div class="card">
+        <h1>Progress Tracker</h1>
+        <p class="subtitle">Track a habit day by day: done, tried, or not done.</p>
+        <input id="email-input" type="email" placeholder="you@example.com" />
+        <button id="signup-btn">Continue</button>
+        <p id="signup-message" class="message"></p>
+    </div>
+</div>
+
+<div id="verify-screen" class="screen hidden">
+    <div class="card">
+        <h1>Check your inbox</h1>
+        <p class="subtitle">We sent a verification link to your email. Click it, then come back here.</p>
+        <button id="check-verified-btn">I've verified — continue</button>
+        <p id="verify-message" class="message"></p>
+    </div>
+</div>
+
+<div id="calendar-screen" class="screen hidden">
+    <div class="header">
+        <h1>My Progress</h1>
+        <span id="user-email" class="user-email"></span>
+    </div>
+
+    <div class="stats">
+        <div class="stat stat-done"><span id="stat-done">0</span><label>Done</label></div>
+        <div class="stat stat-tried"><span id="stat-tried">0</span><label>Tried</label></div>
+        <div class="stat stat-not-done"><span id="stat-notdone">0</span><label>Not done</label></div>
+    </div>
+
+    <div class="month-nav">
+        <button id="prev-month">&larr;</button>
+        <span id="month-label"></span>
+        <button id="next-month">&rarr;</button>
+    </div>
+
+    <div class="weekday-row">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+    </div>
+
+    <div id="calendar-grid" class="calendar-grid"></div>
+
+    <p class="legend">Click a day to cycle: gray &rarr; green (done) &rarr; yellow (tried) &rarr; red (not done) &rarr; gray</p>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
